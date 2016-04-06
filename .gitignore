@@ -1,0 +1,13 @@
+/node_modules
+/bower_components
+.idea
+/.project
+*.DS_Store
+/js
+/target
+/coverage
+/junit
+*.log
+*.rdb
+*.iml
+/bin
