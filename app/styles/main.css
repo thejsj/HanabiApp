@@ -24,6 +24,7 @@
 	display : block;
 	margin : auto;
 	margin-top : 10px;
+	border-radius : 5px;
 }
 
 .numberBox {
