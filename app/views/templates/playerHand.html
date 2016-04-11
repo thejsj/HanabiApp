@@ -1,0 +1,10 @@
+
+<div ng-repeat="card in player.hand" class="playerCard {{ card.html.orientation }}">
+	<div class="colorBox" style="background-color : {{card.color}};">
+	</div>
+	<div class="numberBoxContainer">
+		<span class="numberBox">
+			{{ card.number }}
+		</span>
+	</div>
+</div>

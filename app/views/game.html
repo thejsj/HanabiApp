@@ -1,3 +1,23 @@
-<div>
-	game page
+<div class="container">
+
+	<div id="gameBoard" class="jumbotron">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<player-hand class="topHand col-sm-6" player="players[2]"></player-hand>
+			<div class="col-sm-3"></div>
+		</div>
+
+		<div class="row">
+			<player-hand class="leftHand col-sm-3" player="players[1]"></player-hand>
+			<div class="col-sm-6"></div>
+			<player-hand class="rightHand col-sm-3" player="players[3]"></player-hand>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<player-hand class="bottomHand col-sm-6" player="players[0]"></player-hand>
+			<div class="col-sm3"></div>
+		</div>
+	</div>
+
 </div>
