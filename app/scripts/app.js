@@ -6,12 +6,18 @@ app.config(function($routeProvider) {
   $routeProvider.when('/home',
     {
       templateUrl: 'app/views/home.html',
-      controller: 'HomeCtrl'
+      controller: 'HomeCtrl',
+      controllerAs: 'homeCtrl'
     }
   ).when('/play',
     {
       templateUrl: 'app/views/game.html',
-      controller: 'GameCtrl'
+      controller: 'GameCtrl',
+      controllerAs: 'gameCtrl'
     }
-  );
+  ).otherwise({
+      templateUrl: 'app/views/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'homeCtrl'
+  });
 });

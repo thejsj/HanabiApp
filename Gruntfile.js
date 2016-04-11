@@ -49,8 +49,8 @@ module.exports = function(grunt) {
 	  },
 		watch: {
 		  client: {
-		    files: ['app/**/*', 'app/**/**/*'],
-		    tasks:[],
+		    files: ['app/**/*', 'app/**/**/*', 'app/**/**/**/*'],
+		    tasks: [],
 		    options: {
 		      livereload:LIVERELOAD_PORT
 		    }
@@ -58,5 +58,16 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['includeSource', 'connect:client:keepalive', 'watch:client']);
+	grunt.registerTask('default', function() {
+		console.log('Use "grunt build" to build, "grunt serve" to run.');
+	});
+
+	grunt.registerTask('build', ['includeSource']);
+
+	grunt.registerTask('serve', 'Compile then start a connect web server', function(target) {
+    grunt.task.run([
+      'connect:client',
+      'watch:client'
+    ]);
+  });
 };

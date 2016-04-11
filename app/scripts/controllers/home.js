@@ -6,6 +6,6 @@
 	HomeCtrl.$inject = ['$scope'];
 
 	function HomeCtrl($scope) {
-		console.log('homeCtrl...');
-	};
+		
+	}
 })();
