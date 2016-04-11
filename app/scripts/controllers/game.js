@@ -58,6 +58,7 @@
 			currentCard.colorHinted = false;
 			currentCard.html = generateCardHtml(currentCard, player);
 			player.hand.push(currentCard);
+			player.hand.sort(sortHand);
 		}
 
 		function generateCardHtml(card, player) {
@@ -73,6 +74,15 @@
 				return 'verticalCard';
 			} else {
 				return 'horizontalCard';
+			}
+		}
+
+		function sortHand(a, b) {
+			if (a.numberHinted) {
+				return -1;
+			}
+			if (a.colorHinted) {
+				return -1;
 			}
 		}
 

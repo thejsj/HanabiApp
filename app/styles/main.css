@@ -5,6 +5,13 @@
 	text-align: center;
 }
 
+#centerBoard {
+	border : 5px solid black;
+	border-radius : 5px;
+	height : 325px;
+	background-color : #E0E0E0;
+}
+
 .playerCard {
 	border : 2px solid black;
 	border-radius : 4px;
@@ -39,7 +46,6 @@
 .horizontalCard {
 	width : 75px;
 	height: 50px;
-	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left : 75px;
 }
@@ -77,4 +83,112 @@
 
 .leftHand,
 .rightHand {
+	margin-top : 15px;
+}
+
+.stacks {
+	padding-bottom : 10px;
+}
+
+.stackCard {
+	opacity : 1;
+}
+
+#redStack,
+#whiteStack,
+#greenStack,
+#yellowStack,
+#blueStack {
+	width : 75px;
+	height : 100px;
+	display : inline-block;
+	margin-top : 25px;
+	margin-left : 5px;
+	margin-right : 5px;
+	border : 1px solid black;
+	opacity : 0.4;
+}
+
+#redStack {
+	background-color : red;
+}
+
+#whiteStack {
+	background-color : white;
+}
+
+#blueStack {
+	background-color : blue;
+}
+
+#greenStack {
+	background-color : green;
+}
+
+#yellowStack {
+	background-color : yellow;
+}
+
+.infoLabel {
+	font-weight: bold;
+	margin-left : 20px;
+	margin-top : 5px;
+}
+
+.gameInfo {
+	font-size : 18px;
+	padding-bottom : 5px;
+	margin-top : 2px;
+}
+
+.strikesInfo {
+	margin-right : 20px;
+}
+
+.discardPile {
+	border : 1px solid black;
+	background-color : #A8A8A8;
+	width : ;
+}
+
+#whiteDiscards,
+#yellowDiscards,
+#redDiscards,
+#blueDiscards,
+#greenDiscards {
+	margin-top: 8px;
+	display : inline-block;
+	font-size : 8px;
+	width : 75px;
+	margin-left : 5px;
+	margin-right : 5px;
+}
+
+#whiteDiscards p,
+#yellowDiscards p,
+#redDiscards p,
+#blueDiscards p,
+#greenDiscards p {
+	font-size : 12px;
+	line-height : 8px;
+}
+
+#whiteDiscards p span {
+	color : white;
+}
+
+#yellowDiscards p span {
+	color : yellow;
+}
+
+#redDiscards p span {
+	color : red;
+}
+
+#blueDiscards p span {
+	color : blue;
+}
+
+#greenDiscards p span {
+	color : green;
 }

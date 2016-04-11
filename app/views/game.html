@@ -9,7 +9,82 @@
 
 		<div class="row">
 			<player-hand class="leftHand col-sm-3" player="players[1]"></player-hand>
-			<div class="col-sm-6"></div>
+
+			<div id="centerBoard" class="col-sm-6">
+				<div class="stacks row">
+					<div id="whiteStack">
+					</div>
+					<div id="yellowStack">
+					</div>
+					<div id="redStack">
+					</div>
+					<div id="blueStack">
+					</div>
+					<div id="greenStack">
+					</div>
+				</div>
+
+				<div class="discardPile row">
+					<div class="row">
+						<b>Discards:</b>
+					</div>
+
+					<div id="whiteDiscards">
+						<p><span>1</span> : {{ }}/3</p>
+						<p><span>2</span> : {{ }}/2</p>
+						<p><span>3</span> : {{ }}/2</p>
+						<p><span>4</span> : {{ }}/2</p>
+						<p><span>5</span> : {{ }}/1</p>
+					</div>
+					<div id="yellowDiscards">
+						<p><span>1</span> : {{ }}/3</p>
+						<p><span>2</span> : {{ }}/2</p>
+						<p><span>3</span> : {{ }}/2</p>
+						<p><span>4</span> : {{ }}/2</p>
+						<p><span>5</span> : {{ }}/1</p>
+					</div>
+					<div id="redDiscards">
+						<p><span>1</span> : {{ }}/3</p>
+						<p><span>2</span> : {{ }}/2</p>
+						<p><span>3</span> : {{ }}/2</p>
+						<p><span>4</span> : {{ }}/2</p>
+						<p><span>5</span> : {{ }}/1</p>
+					</div>
+					<div id="blueDiscards">
+						<p><span>1</span> : {{ }}/3</p>
+						<p><span>2</span> : {{ }}/2</p>
+						<p><span>3</span> : {{ }}/2</p>
+						<p><span>4</span> : {{ }}/2</p>
+						<p><span>5</span> : {{ }}/1</p>
+					</div>
+					<div id="greenDiscards">
+						<p><span>1</span> : {{ }}/3</p>
+						<p><span>2</span> : {{ }}/2</p>
+						<p><span>3</span> : {{ }}/2</p>
+						<p><span>4</span> : {{ }}/2</p>
+						<p><span>5</span> : {{ }}/1</p>
+					</div>
+
+				</div>
+
+				<div class="gameInfo row">
+					<div class="pull-left">
+						<span class="infoLabel">
+							Hints: 
+						</span>
+						{{ hints }}
+					</div>
+
+					<div class="strikesInfo pull-right">
+						<span class="infoLabel">
+							Strikes:
+						</span>
+						{{ strikes }}
+					</div>
+				</div>
+
+			</div>
+
 			<player-hand class="rightHand col-sm-3" player="players[3]"></player-hand>
 		</div>
 
