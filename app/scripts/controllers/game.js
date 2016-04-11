@@ -10,6 +10,13 @@
 		$scope.players = [ ];
 		$scope.hints = 8;
 		$scope.strikes = 0;
+		$scope.stacks = {
+			'white' : 0,
+			'yellow' : 0,
+			'red' : 0,
+			'blue' : 0,
+			'green' : 0
+		};
 		$scope.discards = {
 			'white' : {
 				1 : 0,
@@ -47,6 +54,7 @@
 				5 : 0
 			}
 		};
+		$scope.playCard = playCard;
 
 		load();
 
@@ -54,6 +62,7 @@
 			$scope.deck = DeckFactory.buildDeck();
 			getPlayers();
 			dealCards();
+			$scope.turn = 1;
 		}
 
 		function getPlayers() {
@@ -121,6 +130,20 @@
 			if (a.colorHinted) {
 				return -1;
 			}
+		}
+
+		function playCard() {
+			console.log('playing card...');
+			$('#player' + $scope.turn + 'hand').find('.playerCard')
+				.hover(function() {
+					$(this).addClass('cardHover');
+				}, function() {
+					$(this).removeClass('cardHover');
+				}).attr('ng-click', 'showCardMenu()');	
+		}
+
+		function showCardMenu() {
+
 		}
 
 	};

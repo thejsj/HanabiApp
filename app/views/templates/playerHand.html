@@ -1,8 +1,9 @@
-
+<i ng-if="player.id === turn" class="glyphicon glyphicon-arrow-right turnArrow"></i>
 <div ng-repeat="card in player.hand" class="playerCard {{ card.html.orientation }}">
-	<div class="colorBox" style="background-color : {{card.color}};">
+	<div class="colorBox" style="background-color : {{card.color}};" 
+			 ng-if="(player.id !== 1) || (card.colorHinted)">
 	</div>
-	<div class="numberBoxContainer">
+	<div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
 		<span class="numberBox">
 			{{ card.number }}
 		</span>

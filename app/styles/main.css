@@ -1,3 +1,7 @@
+#main {
+	margin-top : 50px;
+}
+
 #gameBoard {
 	width : 100%;
 	margin : auto;
@@ -192,4 +196,25 @@
 
 #greenDiscards p span {
 	color : green;
+}
+
+.topBottomTurn {
+	margin-top : 75px;
+}
+
+.turnArrow {
+	font-size : 20px;
+}
+
+.turnButtons {
+	text-align: center;
+	margin-top : 10px;
+}
+
+.turnButtons button {
+	width : 125px;
+}
+
+.cardHover {
+	border : 4px solid red;
 }

@@ -16,8 +16,6 @@ app.config(function($routeProvider) {
       controllerAs: 'gameCtrl'
     }
   ).otherwise({
-      templateUrl: 'app/views/home.html',
-      controller: 'HomeCtrl',
-      controllerAs: 'homeCtrl'
+      redirectTo : '/home'
   });
 });

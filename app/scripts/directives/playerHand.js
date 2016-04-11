@@ -8,7 +8,7 @@
       restrict : 'E',
       scope : {
       	player : '=',
-      	sideBySide : '='
+      	turn : '='
       },
       transclude : true,
       templateUrl : 'app/views/templates/playerHand.html'
