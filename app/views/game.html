@@ -3,12 +3,12 @@
 	<div id="gameBoard" class="jumbotron">
 		<div class="row">
 			<div class="col-sm-3"></div>
-			<player-hand id="player3hand" class="topHand col-sm-6" player="players[2]" turn="turn"></player-hand>
+			<player-hand id="player3hand" class="topHand col-sm-6" player="players[2]" turn="turn" discard="discard"></player-hand>
 			<div class="col-sm-3"></div>
 		</div>
 
 		<div class="row">
-			<player-hand id="player2hand" class="leftHand col-sm-3" player="players[1]" turn="turn"></player-hand>
+			<player-hand id="player2hand" class="leftHand col-sm-3" player="players[1]" turn="turn" discard="discard"></player-hand>
 
 			<div id="centerBoard" class="col-sm-6">
 				<div class="stacks row">
@@ -85,19 +85,20 @@
 
 			</div>
 
-			<player-hand id="player4hand" class="rightHand col-sm-3" player="players[3]" turn="turn"></player-hand>
+			<player-hand id="player4hand" class="rightHand col-sm-3" player="players[3]" turn="turn" discard="discard"></player-hand>
 
 		</div>
 
 		<div class="row">
 			<div class="col-sm-3"></div>
-			<player-hand id="player1hand" class="bottomHand col-sm-6" player="players[0]" turn="turn"></player-hand>
+			<player-hand id="player1hand" class="bottomHand col-sm-6" player="players[0]" turn="turn" discard="discard"></player-hand>
 			<div class="col-sm3"></div>
 		</div>
 
 		<div class="turnButtons">
-			<button class="btn" ng-click="playCard()">Play Card</button>
+			<button class="btn" ng-click="playCardClicked()">Play Card</button>
 			<button class="btn btn-primary">Make Hint</button>
+			<button class="btn btn-default" ng-click="discardClicked()">Discard</button>
 		</div>
 	</div>
 

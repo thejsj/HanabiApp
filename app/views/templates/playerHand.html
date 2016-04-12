@@ -1,11 +1,41 @@
-<i ng-if="player.id === turn" class="glyphicon glyphicon-arrow-right turnArrow"></i>
-<div ng-repeat="card in player.hand" class="playerCard {{ card.html.orientation }}">
-	<div class="colorBox" style="background-color : {{card.color}};" 
-			 ng-if="(player.id !== 1) || (card.colorHinted)">
+<!-- <div class="dropdown">
+	<div ng-repeat="card in player.hand" id="{{card.id}}" class="playerCard {{ card.html.orientation }} shadow dropdown-toggle" type="button" toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+				style="background-color : {{card.html.color}};" >
+		<div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
+			<span class="numberBox">
+				{{ card.number }}
+			</span>
+		</div>
 	</div>
-	<div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
-		<span class="numberBox">
-			{{ card.number }}
-		</span>
+
+	<div id="{{ card.id }} + 'Menu'" class="cardMenu">
+
 	</div>
 </div>
+
+ -->
+<div ng-if="(player.id === 2) || (player.id === 4)">
+	<div ng-repeat="card in player.hand" class="dropdown">
+	  <button type="button" class="btn btn-default dropdown-toggle playerCard {{ card.html.orientation }} shadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+	  style="background-color : {{card.html.color}};">
+	    <div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
+				<span class="numberBox">
+					{{ card.number }}
+				</span>
+			</div>
+	  </button>
+	</div>
+</div>
+<div ng-if="(player.id === 1) || (player.id === 3)">
+ <div ng-repeat="card in player.hand" class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle playerCard {{ card.html.orientation }} shadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+	  style="background-color : {{card.html.color}};">
+	    <div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
+				<span class="numberBox">
+					{{ card.number }}
+				</span>
+			</div>
+	  </button>
+	</div>
+</div>
+		

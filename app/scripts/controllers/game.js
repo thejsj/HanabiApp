@@ -54,7 +54,18 @@
 				5 : 0
 			}
 		};
-		$scope.playCard = playCard;
+		$scope.playCardClicked = playCardClicked;
+		$scope.discardClicked = discardClicked;
+		$scope.discard = discard;
+
+		var colorMap = {
+			'white' : 'white',
+			'yellow' : '#EFEA53',
+			'red' : '#F75151',
+			'blue' : '#5BC0DE',
+			'green' : '#0E9D57',
+			'hidden' : '#9E9E9E'
+		}
 
 		load();
 
@@ -62,7 +73,12 @@
 			$scope.deck = DeckFactory.buildDeck();
 			getPlayers();
 			dealCards();
-			$scope.turn = 1;
+			$scope.turn = {
+				'player' : 1,
+				'playingCard' : false,
+				'makingHint' : false,
+				'discarding' : false
+			};
 		}
 
 		function getPlayers() {
@@ -108,8 +124,13 @@
 		}
 
 		function generateCardHtml(card, player) {
-			var htmlObj = {};
-			htmlObj.color = card.color + 'Card';
+			var htmlObj = {}
+			if (player.id !== 1) {
+				htmlObj.color = colorMap[card.color];
+			} else {
+				htmlObj.color = colorMap['hidden'];
+			}
+			
 			htmlObj.orientation = getCardOrientation(player);
 			//...
 			return htmlObj;
@@ -132,14 +153,28 @@
 			}
 		}
 
-		function playCard() {
-			console.log('playing card...');
-			$('#player' + $scope.turn + 'hand').find('.playerCard')
+		function playCardClicked() {
+			addHoverAnimation();	
+		}
+
+		function discardClicked() {
+			addHoverAnimation();
+
+			$('#player' + $scope.turn.player + 'hand').find('.playerCard')
+				.attr('ng-click', 'discard(card)').$compile();
+		}
+
+		function discard(card) {
+			console.log('discarded...');
+		}
+
+		function addHoverAnimation() {
+			$('#player' + $scope.turn.player + 'hand').find('.playerCard')
 				.hover(function() {
 					$(this).addClass('cardHover');
 				}, function() {
 					$(this).removeClass('cardHover');
-				}).attr('ng-click', 'showCardMenu()');	
+				}).attr('ng-click', 'showCardMenu(card)');	
 		}
 
 		function showCardMenu() {

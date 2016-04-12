@@ -8,7 +8,8 @@
       restrict : 'E',
       scope : {
       	player : '=',
-      	turn : '='
+      	turn : '=',
+      	discard : '&discard'
       },
       transclude : true,
       templateUrl : 'app/views/templates/playerHand.html'
