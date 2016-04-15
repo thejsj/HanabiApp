@@ -13,58 +13,32 @@
 			<div id="centerBoard" class="col-sm-6">
 				<div class="stacks row">
 					<div id="whiteStack">
+						{{ stacks['white'] }}
 					</div>
 					<div id="yellowStack">
+						{{ stacks['yellow'] }}
 					</div>
 					<div id="redStack">
+						{{ stacks['red'] }}
 					</div>
 					<div id="blueStack">
+						{{ stacks['blue'] }}
 					</div>
 					<div id="greenStack">
+						{{ stacks['green'] }}
 					</div>
 				</div>
 
-				<div class="discardPile row">
-					<div class="row">
-						<b>Discards:</b>
+				<div id="gameConsole">
+					<div class="consoleMessage row">
+						{{ message }}
 					</div>
-
-					<div id="whiteDiscards">
-						<p><span>1</span> : {{ discards.white[1] }}/3</p>
-						<p><span>2</span> : {{ discards.white[2] }}/2</p>
-						<p><span>3</span> : {{ discards.white[3] }}/2</p>
-						<p><span>4</span> : {{ discards.white[4] }}/2</p>
-						<p><span>5</span> : {{ discards.white[5] }}/1</p>
+					<div class="turnButtons row">
+						<button class="btn btn-info" ng-click="playCardClicked()">PLAY CARD</button>
+						<button class="btn btn-success" ng-click="makeHintClicked()"
+							ng-disabled="hints < 1">MAKE HINT</button>
+						<button class="btn btn-danger" ng-click="discardClicked()">DISCARD</button>
 					</div>
-					<div id="yellowDiscards">						
-						<p><span>1</span> : {{ discards.yellow[1] }}/3</p>
-						<p><span>2</span> : {{ discards.yellow[2] }}/2</p>
-						<p><span>3</span> : {{ discards.yellow[3] }}/2</p>
-						<p><span>4</span> : {{ discards.yellow[4] }}/2</p>
-						<p><span>5</span> : {{ discards.yellow[5] }}/1</p>
-					</div>
-					<div id="redDiscards">
-						<p><span>1</span> : {{ discards.red[1] }}/3</p>
-						<p><span>2</span> : {{ discards.red[2] }}/2</p>
-						<p><span>3</span> : {{ discards.red[3] }}/2</p>
-						<p><span>4</span> : {{ discards.red[4] }}/2</p>
-						<p><span>5</span> : {{ discards.red[5] }}/1</p>
-					</div>
-					<div id="blueDiscards">
-						<p><span>1</span> : {{ discards.blue[1] }}/3</p>
-						<p><span>2</span> : {{ discards.blue[2] }}/2</p>
-						<p><span>3</span> : {{ discards.blue[3] }}/2</p>
-						<p><span>4</span> : {{ discards.blue[4] }}/2</p>
-						<p><span>5</span> : {{ discards.blue[5] }}/1</p>
-					</div>
-					<div id="greenDiscards">
-						<p><span>1</span> : {{ discards.green[1] }}/3</p>
-						<p><span>2</span> : {{ discards.green[2] }}/2</p>
-						<p><span>3</span> : {{ discards.green[3] }}/2</p>
-						<p><span>4</span> : {{ discards.green[4] }}/2</p>
-						<p><span>5</span> : {{ discards.green[5] }}/1</p>
-					</div>
-
 				</div>
 
 				<div class="gameInfo row">
@@ -89,16 +63,55 @@
 
 		</div>
 
+
 		<div class="row">
-			<div class="col-sm-3"></div>
+			<div class="col-sm-3">
+				<div class="discardPile row">
+					<div class="discardsTitle row">
+						<b>Discards</b>
+					</div>
+
+					<div id="whiteDiscards">
+						<p> <span>1</span>  {{ discards.white[1] }}
+								<span>2</span>  {{ discards.white[2] }}
+								<span>3</span>  {{ discards.white[3] }}
+								<span>4</span>  {{ discards.white[4] }}
+								<span>5</span>  {{ discards.white[5] }} </p>
+					</div>
+					<div id="yellowDiscards">												
+						<p> <span>1</span>  {{ discards.yellow[1] }}
+								<span>2</span>  {{ discards.yellow[2] }}
+								<span>3</span>  {{ discards.yellow[3] }}
+								<span>4</span>  {{ discards.yellow[4] }}
+								<span>5</span>  {{ discards.yellow[5] }} </p>
+					</div>
+					<div id="redDiscards">						
+						<p> <span>1</span>  {{ discards.red[1] }}
+								<span>2</span>  {{ discards.red[2] }}
+								<span>3</span>  {{ discards.red[3] }}
+								<span>4</span>  {{ discards.red[4] }}
+								<span>5</span>  {{ discards.red[5] }} </p>
+					</div>
+					<div id="blueDiscards">
+						<p> <span>1</span>  {{ discards.blue[1] }}
+								<span>2</span>  {{ discards.blue[2] }}
+								<span>3</span>  {{ discards.blue[3] }}
+								<span>4</span>  {{ discards.blue[4] }}
+								<span>5</span>  {{ discards.blue[5] }} </p>
+					</div>
+					<div id="greenDiscards">
+						<p> <span>1</span>  {{ discards.green[1] }}
+								<span>2</span>  {{ discards.green[2] }}
+								<span>3</span>  {{ discards.green[3] }}
+								<span>4</span>  {{ discards.green[4] }}
+								<span>5</span>  {{ discards.green[5] }} </p>
+					</div>
+
+				</div>
+
+			</div>
 			<player-hand id="player1hand" class="bottomHand col-sm-6" player="players[0]" turn="turn" discard="discard"></player-hand>
 			<div class="col-sm3"></div>
-		</div>
-
-		<div class="turnButtons">
-			<button class="btn" ng-click="playCardClicked()">Play Card</button>
-			<button class="btn btn-primary">Make Hint</button>
-			<button class="btn btn-default" ng-click="discardClicked()">Discard</button>
 		</div>
 	</div>
 

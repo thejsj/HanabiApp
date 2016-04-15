@@ -3,9 +3,9 @@
 
 	angular.module('hanabiApp').controller('GameCtrl', GameCtrl);
 
-	GameCtrl.$inject = ['$scope', 'DeckFactory'];
+	GameCtrl.$inject = ['$scope', '$rootScope', '$compile', 'DeckFactory', 'AnimationSvc'];
 
-	function GameCtrl($scope, DeckFactory) {
+	function GameCtrl($scope, $rootScope, $compile, DeckFactory, AnimationSvc) {
 		$scope.deck = [ ];
 		$scope.players = [ ];
 		$scope.hints = 8;
@@ -56,29 +56,50 @@
 		};
 		$scope.playCardClicked = playCardClicked;
 		$scope.discardClicked = discardClicked;
-		$scope.discard = discard;
+		$scope.makeHintClicked = makeHintClicked;
 
-		var colorMap = {
-			'white' : 'white',
-			'yellow' : '#EFEA53',
-			'red' : '#F75151',
-			'blue' : '#5BC0DE',
-			'green' : '#0E9D57',
-			'hidden' : '#9E9E9E'
-		}
+		var cardMap = {};
+
+		$rootScope.$on('cardClicked', function(event, data) {
+			switch ($scope.currentPlayerAction) {
+				case 'd':
+					if ($scope.turn.player.id === data.playerId) {
+						discard(data.card);
+					}
+					break;
+				case 'h':
+					if ($scope.turn.player.id !== data.playerId) {
+						makeHint(data.card);
+					}
+					break;
+				case 'p':
+					if ($scope.turn.player.id === data.playerId) {
+						playCard(data.card);
+					}
+					break;
+				default:
+					break;
+			}
+		});
 
 		load();
 
 		function load() {
-			$scope.deck = DeckFactory.buildDeck();
+			$scope.message = 'Waiting for players...';
+			// TODO
 			getPlayers();
+			$scope.message = 'Dealing...';
+			$scope.deck = DeckFactory.buildDeck();
 			dealCards();
+			$scope.message = 'Starting game...';
 			$scope.turn = {
-				'player' : 1,
+				'player' : $scope.players[0],
 				'playingCard' : false,
 				'makingHint' : false,
 				'discarding' : false
 			};
+			$scope.message = $scope.turn.player.name + "'s turn...";
+			cardMap = {};
 		}
 
 		function getPlayers() {
@@ -114,33 +135,15 @@
 		}
 
 		function dealCard(player) {
-			var currentCard = angular.copy($scope.deck[0]);
-			$scope.deck.splice(0, 1);
-			currentCard.numberHinted = false;
-			currentCard.colorHinted = false;
-			currentCard.html = generateCardHtml(currentCard, player);
-			player.hand.push(currentCard);
-			player.hand.sort(sortHand);
-		}
-
-		function generateCardHtml(card, player) {
-			var htmlObj = {}
-			if (player.id !== 1) {
-				htmlObj.color = colorMap[card.color];
-			} else {
-				htmlObj.color = colorMap['hidden'];
-			}
-			
-			htmlObj.orientation = getCardOrientation(player);
-			//...
-			return htmlObj;
-		}
-
-		function getCardOrientation(player) {
-			if (player.id % 2) {
-				return 'verticalCard';
-			} else {
-				return 'horizontalCard';
+			if ($scope.deck.length > 0) {
+				var currentCard = angular.copy($scope.deck[0]);
+				$scope.deck.splice(0, 1);
+				currentCard.numberHinted = false;
+				currentCard.colorHinted = false;
+				currentCard.html = DeckFactory.getCardHtml(currentCard, player);
+				player.hand.push(currentCard);
+				cardMap[currentCard.id] = player.id;
+				player.hand.sort(sortHand);
 			}
 		}
 
@@ -154,31 +157,85 @@
 		}
 
 		function playCardClicked() {
-			addHoverAnimation();	
+			$scope.message = $scope.turn.player.name + ' is playing a card...';
+			AnimationSvc.removeHovers();
+			AnimationSvc.addHoverAnimation($scope.turn.player, 'playHover');
+			$scope.currentPlayerAction = 'p';
 		}
 
 		function discardClicked() {
-			addHoverAnimation();
+			$scope.message = $scope.turn.player.name + ' is discarding...';
+			AnimationSvc.removeHovers();
+			AnimationSvc.addHoverAnimation($scope.turn.player, 'discardHover');
+			$scope.currentPlayerAction = 'd';
+		}
 
-			$('#player' + $scope.turn.player + 'hand').find('.playerCard')
-				.attr('ng-click', 'discard(card)').$compile();
+		function makeHintClicked() {
+			$scope.message = $scope.turn.player.name + ' is making a hint...';
+			AnimationSvc.removeHovers();
+			$scope.players.forEach(function(player) {
+				if (player !== $scope.turn.player) {
+					AnimationSvc.addHoverAnimation(player, 'hintHover');
+				}
+			});
+			$scope.currentPlayerAction = 'h';
 		}
 
 		function discard(card) {
-			console.log('discarded...');
+			var currPlayerId = $scope.turn.player.id;
+			var currPlayerObj = $scope.players.filter(function(player) {
+				if (player.id === $scope.turn.player.id) {
+					return true;
+				}
+				return false;
+			})[0];
+			var cardIx = currPlayerObj.hand.indexOf(card);
+			if (cardIx > -1) {
+				currPlayerObj.hand.splice(cardIx, 1);
+			}
+			$scope.discards[card.color][card.number]++;
+			dealCard(currPlayerObj);
+			if ($scope.hints < 8) {
+				$scope.hints++;
+			}
+			nextTurn();
 		}
 
-		function addHoverAnimation() {
-			$('#player' + $scope.turn.player + 'hand').find('.playerCard')
-				.hover(function() {
-					$(this).addClass('cardHover');
-				}, function() {
-					$(this).removeClass('cardHover');
-				}).attr('ng-click', 'showCardMenu(card)');	
+		function playCard(card) {
+			var currPlayerId = $scope.turn.player.id;
+			var currPlayerObj = $scope.players.filter(function(player) {
+				if (player.id === $scope.turn.player.id) {
+					return true;
+				}
+				return false;
+			})[0];
+			var cardIx = currPlayerObj.hand.indexOf(card);
+			if (cardIx > -1) {
+				if (($scope.stacks[card.color] + 1) === card.number) {
+					$scope.stacks[card.color]++;
+				} else {
+					$scope.strikes++;
+				}
+				$scope.discards[card.color][card.number]++;
+				currPlayerObj.hand.splice(cardIx, 1);
+			}
+			dealCard(currPlayerObj);
+			nextTurn();
 		}
 
-		function showCardMenu() {
+		function makeHint(card) {
+			
+		}
 
+		function nextTurn() {
+			var currPlayerIx = $scope.players.indexOf($scope.turn.player);
+			if (currPlayerIx === 3) {
+				$scope.turn.player = $scope.players[0];
+			} else if (currPlayerIx > -1) {
+				$scope.turn.player = $scope.players[currPlayerIx + 1];
+			} 
+			AnimationSvc.removeHovers();
+			$scope.message = $scope.turn.player.name + "'s turn...";
 		}
 
 	};

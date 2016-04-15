@@ -15,9 +15,21 @@
 			5 : 1
 		};
 
-		return {
-			buildDeck : buildDeck
-		};
+		var colorMap = {
+			'white' : 'white',
+			'yellow' : '#EFEA53',
+			'red' : '#F75151',
+			'blue' : '#5BC0DE',
+			'green' : '#0E9D57',
+			'hidden' : '#9E9E9E'
+		}
+
+		var fct = {
+			buildDeck : buildDeck,
+			getCardHtml : getCardHtml
+		}
+
+		return fct;
 
 		function buildDeck(mode) {
 			var deck = [ ];
@@ -50,6 +62,29 @@
 
 		  return array;
 		}
+
+		function getCardHtml(card, player) {
+			var htmlObj = {}
+			if (player.id !== 1) {
+				htmlObj.color = colorMap[card.color];
+			} else {
+				htmlObj.color = colorMap['hidden'];
+			}
+			
+			htmlObj.orientation = getCardOrientation(player);
+			//...
+			return htmlObj;
+		}
+
+		function getCardOrientation(player) {
+			if (player.id % 2) {
+				return 'verticalCard';
+			} else {
+				return 'horizontalCard';
+			}
+		}
+
+
 
 	};
 })();

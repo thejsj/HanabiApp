@@ -16,26 +16,26 @@
  -->
 <div ng-if="(player.id === 2) || (player.id === 4)">
 	<div ng-repeat="card in player.hand" class="dropdown">
-	  <button type="button" class="btn btn-default dropdown-toggle playerCard {{ card.html.orientation }} shadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-	  style="background-color : {{card.html.color}};">
+	  <div class="btn dropdown-toggle playerCard {{ card.html.orientation }} shadow" 
+	  style="background-color : {{card.html.color}};" ng-click="cardClicked(card, player.id)">
 	    <div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
 				<span class="numberBox">
 					{{ card.number }}
 				</span>
 			</div>
-	  </button>
+	  </div>
 	</div>
 </div>
 <div ng-if="(player.id === 1) || (player.id === 3)">
  <div ng-repeat="card in player.hand" class="btn-group">
-	  <button type="button" class="btn btn-default dropdown-toggle playerCard {{ card.html.orientation }} shadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-	  style="background-color : {{card.html.color}};">
+	  <div class="btn dropdown-toggle playerCard {{ card.html.orientation }} shadow" 
+	  style="background-color : {{card.html.color}};" ng-click="cardClicked(card, player.id)">
 	    <div class="numberBoxContainer" ng-if="(player.id !== 1) || (card.numberHinted)">
 				<span class="numberBox">
 					{{ card.number }}
 				</span>
 			</div>
-	  </button>
+	  </div>
 	</div>
 </div>
 		

@@ -1,3 +1,8 @@
+/*@font-face {
+	font-family: 'yFiles';
+	src: url('Monserga-regular-FFP.ttf')
+}*/
+
 #main {
 	margin-top : 50px;
 }
@@ -12,16 +17,32 @@
 #centerBoard {
 	border : 5px solid black;
 	border-radius : 5px;
-	height : 325px;
+	height : 350px;
 	background-color : #E0E0E0;
 }
 
-.playerCard {
+.playerCard,
+.playerCardHover {
 /*	border : 2px solid black;*/
+	border : 1px solid black;
 	border-radius : 4px;
 	background-color : #A8A8A8;
 	width : 75px;
 	height : 50px;
+}
+
+.playerCard:hover {
+	border-width: 0px;
+}
+
+.playerCardHover:hover {
+	border-width : 3px;
+	width : 80px;
+	height : 53px;
+	z-index : 5;
+	margin-top : -5px;
+	margin-right : -3px;
+	box-shadow : 0px 0px;
 }
 
 .colorBox {
@@ -45,7 +66,7 @@
 .numberBoxContainer {
 	margin-top : 5px;
 	display : block;
-	width : 100%;
+	height:  : 100%;
 }
 
 .verticalCard {
@@ -85,7 +106,7 @@
 
 .leftHand,
 .rightHand {
-	margin-top : 15px;
+	margin-top : 30px;
 }
 
 .stacks {
@@ -107,12 +128,12 @@
 	margin-top : 25px;
 	margin-left : 5px;
 	margin-right : 5px;
-	border : 1px solid black;
+	border-radius : 20px;
 	opacity : 0.4;
 }
 
 #redStack {
-	background-color : red;
+	background-color : #F75151;
 }
 
 #whiteStack {
@@ -120,11 +141,11 @@
 }
 
 #blueStack {
-	background-color : blue;
+	background-color : #5BC0DE;
 }
 
 #greenStack {
-	background-color : green;
+	background-color : #52c940;
 }
 
 #yellowStack {
@@ -138,9 +159,14 @@
 }
 
 .gameInfo {
+	display : block;
+	background-color: white;
+	border : 1px solid black;
 	font-size : 18px;
 	padding-bottom : 5px;
-	margin-top : 2px;
+	margin-top : 3px;
+	bottom : 0px;
+	height : 25px;
 }
 
 .strikesInfo {
@@ -148,9 +174,19 @@
 }
 
 .discardPile {
+	margin-top : 15px;
+	border : 2px solid black;
+	border-radius : 5px;
+	background-color : #B7B7B7;
+}
+
+.discardsTitle {
+	margin-top : 4px;
+	background-color : white;
 	border : 1px solid black;
-	background-color : #A8A8A8;
-	width : ;
+	border-radius : 5px;
+	border-collapse: collapse;
+	display : block;
 }
 
 #whiteDiscards,
@@ -158,12 +194,9 @@
 #redDiscards,
 #blueDiscards,
 #greenDiscards {
-	margin-top: 8px;
-	display : inline-block;
-	font-size : 8px;
-	width : 75px;
-	margin-left : 5px;
-	margin-right : 5px;
+	margin-top: 10px;
+	margin-right : 25px;
+	font-size : 5px;
 }
 
 #whiteDiscards p,
@@ -172,7 +205,7 @@
 #blueDiscards p,
 #greenDiscards p {
 	font-size : 12px;
-	line-height : 8px;
+	line-height : 5px;
 }
 
 #whiteDiscards p span {
@@ -195,6 +228,16 @@
 	color : green;
 }
 
+#whiteDiscards p span,
+#yellowDiscards p span,
+#redDiscards p span,
+#blueDiscards p span,
+#greenDiscards p span {
+	font-weight : bold;
+	margin-left : 20px;
+	margin-right : 3px;
+}
+
 .topBottomTurn {
 	margin-top : 75px;
 }
@@ -204,17 +247,32 @@
 }
 
 .turnButtons {
+	top : -50px;
 	text-align: center;
-	margin-top : 10px;
+	vertical-align: middle;
 }
 
 .turnButtons button {
-	width : 125px;
+	width : 150px;
+	height : 35px;
 }
 
-.cardHover {
-		border: 18px solid black;
-		background-color : white;
+.discardHover {
+		border-color: #C9302C;
+}
+
+.playHover {
+	border-color: #5BC0DE;
+}
+
+.hintHover {
+	border-color: #5CB85C;
+}
+
+#gameConsole {
+	height : 178px;
+	text-align: center;
+	padding-top : 10px;
 }
 
 .cardMenu {
@@ -223,11 +281,18 @@
 }
 
 .shadow {
-  -webkit-box-shadow: 1px 2px 2px 1px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    1px 2px 2px 1px #ccc;  /* Firefox 3.5 - 3.6 */
-  box-shadow:         1px 2px 2px 1px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  box-shadow: -3px 3px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .dontDisplay {
 	display : none;
+}
+
+#gameConsole .btn {
+	font-size : 15px;
+	font-weight: bolder;
+}
+
+.consoleMessage {
+	margin-bottom : 5px;
 }
