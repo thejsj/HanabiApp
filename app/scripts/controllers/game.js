@@ -57,6 +57,8 @@
 		$scope.playCardClicked = playCardClicked;
 		$scope.discardClicked = discardClicked;
 		$scope.makeHintClicked = makeHintClicked;
+		$scope.actionClass = '';
+		$scope.currentPlayerAction = '';
 
 		var cardMap = {};
 
@@ -157,10 +159,11 @@
 		}
 
 		function playCardClicked() {
+			$scope.currentPlayerAction = 'p';
+			$scope.actionClass = 'playCardClicked';
 			$scope.message = $scope.turn.player.name + ' is playing a card...';
 			AnimationSvc.removeHovers();
-			AnimationSvc.addHoverAnimation($scope.turn.player, 'playHover');
-			$scope.currentPlayerAction = 'p';
+			AnimationSvc.addHoverAnimation($scope.turn.player, 'playHover');	
 		}
 
 		function discardClicked() {
@@ -168,6 +171,7 @@
 			AnimationSvc.removeHovers();
 			AnimationSvc.addHoverAnimation($scope.turn.player, 'discardHover');
 			$scope.currentPlayerAction = 'd';
+			$scope.actionClass = 'discardClicked';
 		}
 
 		function makeHintClicked() {
@@ -179,6 +183,7 @@
 				}
 			});
 			$scope.currentPlayerAction = 'h';
+			$scope.actionClass = 'makeHintClicked';
 		}
 
 		function discard(card) {
@@ -224,7 +229,8 @@
 		}
 
 		function makeHint(card) {
-			
+			$scope.hints--;
+			nextTurn();
 		}
 
 		function nextTurn() {
@@ -236,6 +242,7 @@
 			} 
 			AnimationSvc.removeHovers();
 			$scope.message = $scope.turn.player.name + "'s turn...";
+			$scope.actionClass = '';
 		}
 
 	};

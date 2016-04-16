@@ -22,7 +22,15 @@
 		}
 
 		function addHoverAnimation(player, clazz) {
-			$('#player' + player.id + 'hand').find('.playerCard')
+			// $('#player' + player.id + 'hand').find('.playerCard')
+			// 	.addClass('playerCardHover')
+			// 	.removeClass('playerCard')
+			// 	.removeClass('discardHover')
+			// 	.removeClass('playHover')
+			// 	.removeClass('hintHover') 
+			// 	.addClass(clazz);
+
+			$('#playDiscardDisplay').find('.playerCard')
 				.addClass('playerCardHover')
 				.removeClass('playerCard')
 				.removeClass('discardHover')

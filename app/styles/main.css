@@ -42,6 +42,7 @@
 	z-index : 5;
 	margin-top : -5px;
 	margin-right : -3px;
+	margin-left : -3px;
 	box-shadow : 0px 0px;
 }
 
@@ -161,7 +162,9 @@
 .gameInfo {
 	display : block;
 	background-color: white;
-	border : 1px solid black;
+	border-top : 1px solid black;
+	border-collapse: collapse;
+	border-radius : 0 0 5px 2px;
 	font-size : 18px;
 	padding-bottom : 5px;
 	margin-top : 3px;
@@ -262,7 +265,7 @@
 }
 
 .playHover {
-	border-color: #5BC0DE;
+	border-color: #31B0D5;;
 }
 
 .hintHover {
@@ -295,4 +298,43 @@
 
 .consoleMessage {
 	margin-bottom : 5px;
+}
+
+.playCardClicked {
+	background-color: #a1daea;
+	border: 3px solid #31B0D5;
+}	
+
+.makeHintClicked {
+	border: 3px solid #5CB85C;
+	background-color: #afedaf;
+}
+
+.discardClicked {
+	background-color: #F2A9A9;
+	border: 3px solid #D9534F;
+}
+
+.discardClicked,
+.makeHintClicked,
+.playCardClicked {
+	height : 105px;
+	border-radius : 5px;
+}
+
+#playDiscardDisplay .playerCard {
+	margin-top : 20px;
+	margin-left : 4px;
+	margin-right : 4px;
+}
+
+#playDiscardDisplay .playerCardHover {
+	margin-top : 20px;
+	margin-left : 4px;
+	margin-right : 4px;
+}
+
+.jumbotron {
+	background-image : url('../images/space.png');
+	background-size : cover;
 }

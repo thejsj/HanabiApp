@@ -39,6 +39,11 @@
 							ng-disabled="hints < 1">MAKE HINT</button>
 						<button class="btn btn-danger" ng-click="discardClicked()">DISCARD</button>
 					</div>
+					<div class="{{ actionClass }}">
+						<div ng-if="(currentPlayerAction === 'p') || (currentPlayerAction === 'd')">
+							<player-hand id="playDiscardDisplay" class="" player="players[0]" turn="turn" discard="discard"></player-hand>
+						</div>
+					</div>
 				</div>
 
 				<div class="gameInfo row">
