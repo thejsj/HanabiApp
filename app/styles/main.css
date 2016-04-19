@@ -323,18 +323,158 @@
 }
 
 #playDiscardDisplay .playerCard {
-	margin-top : 20px;
+	margin-top : 10px;
 	margin-left : 4px;
 	margin-right : 4px;
 }
 
 #playDiscardDisplay .playerCardHover {
-	margin-top : 20px;
+	margin-top : 10px;
 	margin-left : 4px;
 	margin-right : 4px;
 }
 
-.jumbotron {
+.actionMessage {
+	margin-top : 5px;
+	text-align : left;
+	margin-left : 15px;
+}
+
+/*.jumbotron {
 	background-image : url('../images/space.png');
+	background-color : #afafaf;
 	background-size : cover;
+}*/
+
+.hintPlayerBtn {
+	display : inline-blocke;
+	width : 140px;
+	padding: 1px 3px 1px 3px;
+	margin-top : 4px;
+	margin-left : 20px;
+	border-top: 1px solid #000000;
+	background-color: #0E9D57;
+	border-radius: 35px;
+	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	color: white;
+	font-size: 13px;
+	font-family: Palatino, serif;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.hintPlayerBtn:hover {
+	background-color: #828282;
+}
+
+.hintPlayerBtn:active,
+.hintPlayerSelected,
+.hintPlayerSelected:hover {
+   border-top-color: #000000;
+   background-color: #000000;
+   color: white;
+}
+
+.hintPlayerBtn:focus {
+	color : white;
+}
+
+.hintColorBtn {
+	border: 1px solid black;
+	display : inline-block;
+	width : 30px;
+	height : 25px;
+	margin-left : 1px;
+	margin-right : 1px;
+}
+
+.hintColorNumberBtnGrp {
+	margin-top : 7px;
+	margin-left : 30px;
+}
+
+.hintNumberBtn {
+	margin-top : 2px;
+	line-height : 12px;
+	margin-left : 1px;
+	margin-right : 1px;
+	width : 30px;
+	border: 1px solid black;
+}
+
+.hintBtnSelected {
+	border-width : 4px;
+	margin-top : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-bottom : 0px;
+}
+
+#makeHintCardGrp {
+	border : 1px solid #0E9D57;
+	border-right : 0px;
+	margin-top : 5px;
+	margin-left : -20px;
+	display : inline-block;
+	width : 225px;
+	height : 60px;
+	border-collapse: collapse;
+	background-color : #c6c6c6;
+}
+
+.makeHintCard { 
+	opacity : 0.6;
+	font-family : Palatino;
+	font-weight : bold;
+	font-size : 35px;
+	border : 1px solid black;
+	border-radius : 5px;
+	display : inline-block;
+	margin-left : 3px;
+	margin-top : 10px;
+	min-width : 40px;
+	max-width : 65px;
+	width : 40px;
+	height : 45px;
+	position : relative;
+}
+
+.checkboxCorner {
+	width : 18px;
+	position : absolute;
+	bottom : 0px;
+	right : 0px;
+}
+
+.checkboxCorner input {
+}
+
+.unselectable {
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+}
+
+.hintCardSelected {
+	opacity : 1;
+	margin-top : 5px;
+	border-width : 2px solid black;
+	box-shadow : 0px 2px 2px 0px;
+}
+
+.submitHintBtn {
+	border-collapse: collapse;
+	border : 1px solid #0E9D57;
+	border-left : 0px;
+	position : absolute;
+	right : 36px;
+	height : 60px;
+	width : 40px;
+	border-radius : 0px 40px 40px 0px;
+	margin-top : -1px;
 }

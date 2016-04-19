@@ -8,7 +8,8 @@
 	function AnimationService() {
 		var svc = {
 			removeHovers : removeHovers,
-			addHoverAnimation : addHoverAnimation
+			addHoverAnimation : addHoverAnimation,
+			initializeHintSection : initializeHintSection
 		};
 
 		return svc;
@@ -37,6 +38,10 @@
 				.removeClass('playHover')
 				.removeClass('hintHover') 
 				.addClass(clazz);
+		}
+
+		function initializeHintSection() {
+			
 		}
 	}
 })();

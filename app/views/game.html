@@ -40,8 +40,17 @@
 						<button class="btn btn-danger" ng-click="discardClicked()">DISCARD</button>
 					</div>
 					<div class="{{ actionClass }}">
-						<div ng-if="(currentPlayerAction === 'p') || (currentPlayerAction === 'd')">
+						<div ng-show="(currentPlayerAction === 'p') || (currentPlayerAction === 'd')">
+							<div class="actionMessage" ng-show="currentPlayerAction === 'p'">
+								Select card to play:
+							</div>
+							<div class="actionMessage" ng-show="currentPlayerAction === 'd'">
+								Select card to discard:
+							</div>
 							<player-hand id="playDiscardDisplay" class="" player="players[0]" turn="turn" discard="discard"></player-hand>
+						</div>
+						<div id="hintControls" ng-if="(currentPlayerAction === 'h')">
+							<hint-controls></hint-controls>
 						</div>
 					</div>
 				</div>

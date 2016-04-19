@@ -1,0 +1,38 @@
+<div>
+	<div class=" hintPlayerBtnGrp btn-group" ng-repeat="player in hintablePlayers">
+		<button class="hintPlayerBtn inline btn" ng-click="choosePlayer($event, player)">
+			{{ player.name }}
+		</button>
+	</div>
+
+
+	<div class="hintColorNumberBtnGrp pull-left" ng-show="chosenPlayer">
+		<div class="row">
+			<div class="hintColorBtn btn" ng-repeat="color in ugh.colors" style="background-color : {{ color }};" ng-click="chooseColor($event, color)">
+			</div>
+		</div>
+		<div class="row">
+			<div class="hintNumberBtn btn" ng-repeat="number in ugh.numbers" ng-click="chooseNumber($event, number)">
+				{{ number }}
+			</div>
+		</div>
+	</div>
+
+	<div id="makeHintCardGrp" ng-show="(filteredCards.length)">
+		<div class="makeHintCard pull-left unselectable" ng-repeat="card in filteredCards"
+			 style="width : {{ card.html.width }}px; background-color : {{ card.html.color }};"
+			 ng-click="hintCardClicked($event, card)">
+			 {{ card.number }}
+			 <div class="checkboxCorner"> 
+			 		<input id="{{ card.id }}Check" type="checkbox" class="checkbox pull-right" 
+						ng-model="cardInfo[card.id]" disabled/>
+			 </div>
+		</div>
+
+		<button ng-show="(filteredCards.length)" ng-disabled="!(selectedCards.length)"
+			 class="submitHintBtn btn btn-warning pulll-right">
+			<i class="glyphicon glyphicon-ok"></i>
+		</button>
+	</div>
+
+</div>

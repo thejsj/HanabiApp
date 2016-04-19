@@ -18,6 +18,7 @@
 	}
 
 	PlayerHandCtrl.$inject = ['$scope', '$rootScope'];
+	
 	function PlayerHandCtrl($scope, $rootScope) {
 		$scope.cardClicked = cardClicked;
 
