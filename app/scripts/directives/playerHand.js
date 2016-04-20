@@ -9,7 +9,8 @@
       restrict : 'E',
       scope : {
       	player : '=',
-      	turn : '='
+      	turn : '=',
+      	displayInline : '='
       },
       transclude : true,
       templateUrl : 'app/views/templates/playerHand.html',

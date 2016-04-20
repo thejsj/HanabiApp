@@ -84,6 +84,14 @@
 			}
 		});
 
+		$rootScope.$on('hintSubmitted', function(event, data) {
+			if (isNaN(data.hint)) {
+				applyColorHints(data.cards, data.player);
+			} else {
+				applyNumberHints(data.cards, data.player);
+			}
+		});
+
 		load();
 
 		function load() {
@@ -243,6 +251,17 @@
 			AnimationSvc.removeHovers();
 			$scope.message = $scope.turn.player.name + "'s turn...";
 			$scope.actionClass = '';
+			$scope.currentPlayerAction = '';
+		}
+
+		function applyColorHints(cards, player) {
+			var playerIx = $scope.players.indexOf(player);
+			cards.forEach(function(card) {
+				var cardIx = $scope.players[playerIx].hand.indexOf(card);
+				var currCard = $scope.players[playerIx].hand[cardIx];
+				currCard.colorHinted = true;
+				currCard.html.color = colorMap[card.color];
+			});
 		}
 
 	};

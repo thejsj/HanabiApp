@@ -31,6 +31,7 @@
 		$scope.hintCardClicked = hintCardClicked;
 		$scope.selectedCards = [];
 		$scope.cardInfo = {};
+		$scope.submitHint = submitHint;
 
 		var colorMap = {
 			'white' : 'white',
@@ -50,6 +51,7 @@
 				}
 				return true;
 			});
+			$scope.initial = angular.copy($scope.data);
 		}
 
 		function choosePlayer($event, player) {
@@ -121,6 +123,15 @@
 				$scope.cardInfo[card.id] = true;
 				angular.element($event.target).addClass('hintCardSelected');
 			}
+		}
+
+		function submitHint() {
+			$rootScope.$broadcast('hintSubmitted', {
+				cards : $scope.selectedCards,
+				hint : $scope.filteringOn,
+				player : $scope.chosenPlayer
+			});
+			$scope.data = angular.copy($scope.initial);
 		}
 		
 	}

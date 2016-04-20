@@ -14,7 +14,7 @@
 </div>
 
  -->
-<div ng-if="(player.id === 2) || (player.id === 4)">
+<div ng-if="(!displayInline)">
 	<div ng-repeat="card in player.hand" class="dropdown">
 	  <div class="btn dropdown-toggle playerCard {{ card.html.orientation }} shadow" 
 	  style="background-color : {{card.html.color}};" ng-click="cardClicked(card, player.id)">
@@ -26,7 +26,7 @@
 	  </div>
 	</div>
 </div>
-<div ng-if="(player.id === 1) || (player.id === 3)">
+<div ng-if="(displayInline)">
  <div ng-repeat="card in player.hand" class="btn-group">
 	  <div class="btn dropdown-toggle playerCard {{ card.html.orientation }} shadow" 
 	  style="background-color : {{card.html.color}};" ng-click="cardClicked(card, player.id)">

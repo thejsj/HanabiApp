@@ -3,7 +3,7 @@
 	<div id="gameBoard" class="jumbotron">
 		<div class="row">
 			<div class="col-sm-3"></div>
-			<player-hand id="player3hand" class="topHand col-sm-6" player="players[2]" turn="turn" discard="discard"></player-hand>
+			<player-hand id="player3hand" class="topHand col-sm-6" player="players[2]" turn="turn" display-inline="true"></player-hand>
 			<div class="col-sm-3"></div>
 		</div>
 
@@ -47,7 +47,7 @@
 							<div class="actionMessage" ng-show="currentPlayerAction === 'd'">
 								Select card to discard:
 							</div>
-							<player-hand id="playDiscardDisplay" class="" player="players[0]" turn="turn" discard="discard"></player-hand>
+							<player-hand id="playDiscardDisplay" class="" player="turn.player" turn="turn" display-inline="true"></player-hand>
 						</div>
 						<div id="hintControls" ng-if="(currentPlayerAction === 'h')">
 							<hint-controls></hint-controls>
@@ -124,7 +124,7 @@
 				</div>
 
 			</div>
-			<player-hand id="player1hand" class="bottomHand col-sm-6" player="players[0]" turn="turn" discard="discard"></player-hand>
+			<player-hand id="player1hand" class="bottomHand col-sm-6" player="players[0]" turn="turn" display-inline="true"></player-hand>
 			<div class="col-sm3"></div>
 		</div>
 	</div>
