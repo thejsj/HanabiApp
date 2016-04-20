@@ -61,6 +61,14 @@
 		$scope.currentPlayerAction = '';
 
 		var cardMap = {};
+		var colorMap = {
+			'white' : 'white',
+			'yellow' : '#EFEA53',
+			'red' : '#F75151',
+			'blue' : '#5BC0DE',
+			'green' : '#0E9D57',
+			'hidden' : '#9E9E9E'
+		};
 
 		$rootScope.$on('cardClicked', function(event, data) {
 			switch ($scope.currentPlayerAction) {
@@ -85,11 +93,15 @@
 		});
 
 		$rootScope.$on('hintSubmitted', function(event, data) {
+			if ($scope.hints > 0) {
+				$scope.hints--;
+			}
 			if (isNaN(data.hint)) {
 				applyColorHints(data.cards, data.player);
 			} else {
 				applyNumberHints(data.cards, data.player);
 			}
+			nextTurn();
 		});
 
 		load();
@@ -261,6 +273,15 @@
 				var currCard = $scope.players[playerIx].hand[cardIx];
 				currCard.colorHinted = true;
 				currCard.html.color = colorMap[card.color];
+			});
+		}
+
+		function applyNumberHints(cards, player) {
+			var playerIx = $scope.players.indexOf(player);
+			cards.forEach(function(card) {
+				var cardIx = $scope.players[playerIx].hand.indexOf(card);
+				var currCard = $scope.players[playerIx].hand[cardIx];
+				currCard.numberHinted = true;
 			});
 		}
 
